@@ -104,16 +104,16 @@ echo "====已解锁CPU性能限制并重启===="
 
 # 更新脚本
 function update_script() {
-    SCRIPT_URL="https://raw.githubusercontent.com/a3165458/Quilibrium/main/Quili.sh"
+    SCRIPT_URL="https://raw.githubusercontent.com/at200216/quili/main/quili.sh"
     curl -o $SCRIPT_PATH $SCRIPT_URL
     chmod +x $SCRIPT_PATH
-    echo "脚本已更新。请退出脚本后，执行bash Quili.sh 重新运行此脚本。"
+    echo "脚本已更新。请退出脚本后，执行bash quili.sh 重新运行此脚本。"
 }
 
 # 主菜单
 function main_menu() {
-    eccho "NShaw自用，修改于2406051456。简化自大赌哥脚本，十分感谢！"
     clear
+    echo "NShaw自用，修改于2406051456。简化自大赌哥脚本，十分感谢！"
     echo "请选择要执行的操作:"
     echo "1. 安装节点"
     echo "2. 查看日志"
