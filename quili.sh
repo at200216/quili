@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VERSION="240605-2058"
+
 # 检查是否以root用户运行脚本
 if [ "$(id -u)" != "0" ]; then
     echo "此脚本需要以root用户权限运行。"
@@ -109,7 +111,7 @@ echo "====已解锁CPU性能限制并重启===="
 function update_script() {
     rm -rf quili.sh
     wget -O quili.sh https://raw.githubusercontent.com/at200216/quili/main/quili.sh && chmod +x quili.sh
-    echo "====脚本已更新===="
+    echo "====脚本已更新，原版本号为：${VERSION}"
 }
 
 # 主菜单
