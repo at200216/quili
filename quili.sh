@@ -60,6 +60,8 @@ function install_node() {
   
   # 创建一个screen会话并运行命令
   screen -dmS Quili bash -c './release_autorun.sh'
+  echo "====节点安装完成===="
+  
 }
 
 # 查看常规版本节点日志
