@@ -8,7 +8,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # 脚本保存路径
-SCRIPT_PATH="$HOME/Quili.sh"
+SCRIPT_PATH="$HOME/quili.sh"
 
 # 节点安装功能
 function install_node() {
