@@ -71,9 +71,8 @@ function check_service_status() {
 
 # 独立启动
 function run_node() {
-
+    screen -ls | grep Detached | grep quil | awk -F '[.]' '{print $1}' | xargs -I {} screen -S {} -X quit
     screen -dmS Quili bash -c "source /root/.gvm/scripts/gvm && gvm use go1.20.2 && cd ~/ceremonyclient/node && ./release_autorun.sh"
-
     echo "====已重启节点===="
 }
 
@@ -108,16 +107,15 @@ echo "====已解锁CPU性能限制并重启===="
 
 # 更新脚本
 function update_script() {
-    SCRIPT_URL="https://raw.githubusercontent.com/at200216/quili/main/quili.sh"
-    curl -o $SCRIPT_PATH $SCRIPT_URL
-    chmod +x $SCRIPT_PATH
+    rm -rf quili.sh
+    wget -O quili.sh https://raw.githubusercontent.com/at200216/quili/main/quili.sh && chmod +x quili.sh
     echo "====脚本已更新===="
 }
 
 # 主菜单
 function main_menu() {
     clear
-    echo "NShaw自用，简化自大赌哥脚本，十分感谢！"
+    echo "NShaw自用，简化自大赌哥脚本。"
     echo "请选择要执行的操作:"
     echo "1. 安装节点"
     echo "2. 查看日志"
