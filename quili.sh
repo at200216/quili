@@ -109,7 +109,7 @@ function update_script() {
     SCRIPT_URL="https://raw.githubusercontent.com/at200216/quili/main/quili.sh"
     curl -o $SCRIPT_PATH $SCRIPT_URL
     chmod +x $SCRIPT_PATH
-    echo "脚本已更新。请退出脚本后，执行bash quili.sh 重新运行此脚本。"
+    echo "====脚本已更新===="
 }
 
 # 主菜单
