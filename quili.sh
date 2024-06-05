@@ -78,9 +78,9 @@ function run_node() {
 
 # 备份核心数据
 function backup_set() {
-mkdir -p ~/backup
-cat ~/ceremonyclient/node/.config/config.yml > ~/backup/config.txt
-cat ~/ceremonyclient/node/.config/keys.yml > ~/backup/keys.txt
+mkdir -p /home/administrator/backup
+cat ~/ceremonyclient/node/.config/config.yml > /home/administrator/backup/config.yml
+cat ~/ceremonyclient/node/.config/keys.yml > /home/administrator/backup/keys.yml
 
 echo "====备份完成，请执行cd ~/backup 查看备份文件===="
 
@@ -115,7 +115,7 @@ function update_script() {
 # 主菜单
 function main_menu() {
     clear
-    echo "NShaw自用，修改于2406051456。简化自大赌哥脚本，十分感谢！"
+    echo "NShaw自用，简化自大赌哥脚本，十分感谢！"
     echo "请选择要执行的操作:"
     echo "1. 安装节点"
     echo "2. 查看日志"
