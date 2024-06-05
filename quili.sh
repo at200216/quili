@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="240605-2104"
+VERSION="240605-2109"
 
 # 检查是否以root用户运行脚本
 if [ "$(id -u)" != "0" ]; then
@@ -8,9 +8,6 @@ if [ "$(id -u)" != "0" ]; then
     echo "请尝试使用 'sudo -i' 命令切换到root用户，然后再次运行此脚本。"
     exit 1
 fi
-
-# 脚本保存路径
-SCRIPT_PATH="$HOME/quili.sh"
 
 # 节点安装功能
 function install_node() {
@@ -84,7 +81,7 @@ mkdir -p /home/administrator/backup
 cat ~/ceremonyclient/node/.config/config.yml > /home/administrator/backup/config.yml
 cat ~/ceremonyclient/node/.config/keys.yml > /home/administrator/backup/keys.yml
 
-echo "====备份完成，请执行cd ~/backup 查看备份文件===="
+echo "====备份完成===="
 
 }
 
@@ -103,15 +100,8 @@ cd ~/ceremonyclient/node
 git switch release-non-datacenter
 chmod +x release_autorun.sh
 screen -ls | grep Detached | grep quil | awk -F '[.]' '{print $1}' | xargs -I {} screen -S {} -X quit
-screen -dmS Quili bash -c './release_autorun.sh'
+screen -dmS Quili bash -c "source /root/.gvm/scripts/gvm && gvm use go1.20.2 && cd ~/ceremonyclient/node && ./release_autorun.sh"
 echo "====已解锁CPU性能限制并重启===="
-}
-
-# 更新脚本
-function update_script() {
-    rm -rf quili.sh
-    wget -O quili.sh https://raw.githubusercontent.com/at200216/quili/main/quili.sh && chmod +x quili.sh
-    echo "====脚本已更新，原版本号为：${VERSION}"
 }
 
 # 主菜单
@@ -125,8 +115,7 @@ function main_menu() {
     echo "4. 备份文件"
     echo "5. 查询余额"
     echo "6. 性能解锁"
-    echo "7. 更新脚本"
-    read -p "请输入选项（1-7）: " OPTION
+    read -p "请输入选项（1-6）: " OPTION
     case $OPTION in
     1) install_node ;;
     2) check_service_status ;;  
@@ -134,7 +123,6 @@ function main_menu() {
     4) backup_set ;;
     5) check_balance ;;
     6) unlock_performance ;;
-    7) update_script ;;
     *) echo "无效选项。" ;;
     esac
 }
