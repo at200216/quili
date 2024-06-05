@@ -71,6 +71,7 @@ function check_service_status() {
 
 # 独立启动
 function run_node() {
+
     screen -dmS Quili bash -c "source /root/.gvm/scripts/gvm && gvm use go1.20.2 && cd ~/ceremonyclient/node && ./release_autorun.sh"
 
     echo "====已重启节点===="
@@ -100,6 +101,7 @@ function unlock_performance() {
 cd ~/ceremonyclient/node 
 git switch release-non-datacenter
 chmod +x release_autorun.sh
+screen -ls | grep Detached | grep quil | awk -F '[.]' '{print $1}' | xargs -I {} screen -S {} -X quit
 screen -dmS Quili bash -c './release_autorun.sh'
 echo "====已解锁CPU性能限制并重启===="
 }
