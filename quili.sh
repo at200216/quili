@@ -50,9 +50,9 @@ function install_node() {
   gvm install go1.20.2 -B
   gvm use go1.20.2
   
-  git clone https://github.com/a3165458/ceremonyclient.git
+  git clone https://source.quilibrium.com/quilibrium/ceremonyclient.git
   cd ceremonyclient/node
-  git switch release
+  git switch release-cdn
   
   # 赋予执行权限
   chmod +x release_autorun.sh
